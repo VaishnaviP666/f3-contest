@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+    .heading {
+      background-color: black;
+      height: 10vh;
+      color: white;
+      font-size: 30px;
+      padding: 20px;
+    }
+    
+    .createRow {
+      margin: 30px 80px;
+      background-color: black;
+      color: white;
+      padding: 5px 10px;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 90%;
+      margin-bottom: 2px solid black;
+      border: 1px solid black;
+    }
+    th {
+      border-bottom: 2px solid black;
+      border-right: 1px solid black;
+      padding: 10px 15px;
+    }
+    tbody tr td {
+      border-right: 1px solid black;
+      text-align: center;
+    
+      height: 50px;
+    }
+    .adjust {
+      height: 100%;
+      width: 100%;
+      border: none;
+      outline: none;
+      text-align: center;
+    }
+    </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>sk sohel rahaman f2-contest3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  
+  </head>
+  <body>
+    <div class="heading">Dashboard</div>
+    <div>
+      <button class="createRow">Add A New Row</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Student Name</th>
+          <th>Student Roll</th>
+          <th>Subject</th>
+          <th>Marks</th>
+          <th>Marked By</th>
+          <th>Save</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      let tableData = [];
+const addRow = document.querySelector(".createRow");
+const tbl = document.querySelector("tbody");
+let id = 1;
+
+function addElement() {
+  // alert("aaaa");
+  let tr = document.createElement("tr");
+
+  let td1 = tr.appendChild(document.createElement("td"));
+  let td2 = tr.appendChild(document.createElement("td"));
+  let td3 = tr.appendChild(document.createElement("td"));
+  let td4 = tr.appendChild(document.createElement("td"));
+  let td5 = tr.appendChild(document.createElement("td"));
+  let td6 = tr.appendChild(document.createElement("td"));
+  let td7 = tr.appendChild(document.createElement("td"));
+
+  let btn = document.createElement("button");
+  btn.style.backgroundColor = "black";
+  btn.style.color = "white";
+  btn.style.padding = "5px";
+  btn.innerText = "save";
+
+  let inp2 = document.createElement("input");
+  inp2.type = "text";
+  inp2.required = "true";
+
+  inp2.classList.add("adjust");
+
+  let inp3 = document.createElement("input");
+  inp3.type = "text";
+  inp3.required = "true";
+  inp3.classList.add("adjust");
+
+  let inp4 = document.createElement("input");
+  inp4.type = "text";
+  inp4.required = "true";
+  inp4.classList.add("adjust");
+
+  let inp5 = document.createElement("input");
+  inp5.type = "number";
+  inp5.required = "true";
+  inp5.classList.add("adjust");
+
+  let inp6 = document.createElement("input");
+  inp6.type = "email";
+  //    inp6.required='true'
+  inp6.classList.add("adjust");
+
+  td1.innerHTML = id;
+  td2.appendChild(inp2);
+  td3.appendChild(inp3);
+  td4.appendChild(inp4);
+  td5.appendChild(inp5);
+  td6.appendChild(inp6);
+  td7.appendChild(btn);
+
+  tbl.append(tr);
+
+  id++;
+
+  function saveOPtion() {
+    if (
+      inp2.value == "" ||
+      inp3.value == "" ||
+      inp4.value == "" ||
+      inp5.value == "" ||
+      inp6.value == ""
+    ) {
+      alert("Please fill in all fields before saving.");
+    } else if (inp6.value.includes("@") == false) {
+      alert("Please Enter valid Email");
+    } else {
+      inp2.readOnly = "true";
+      inp3.readOnly = "true";
+      inp4.readOnly = "true";
+      inp5.readOnly = "true";
+      inp6.readOnly = "true";
+
+      let obj = {
+        id: td1.innerText,
+        student_name: inp2.value,
+        student_roll: inp3.value,
+        subject: inp4.value,
+        marks: inp5.value,
+        markedBy: inp6.value,
+      };
+
+      tableData.push(obj);
+      console.log("new row :", obj);
+
+      console.log("tableData array :", tableData);
+
+      td7.innerHTML = null;
+    }
+  }
+  btn.addEventListener("click", saveOPtion);
+}
+addRow.addEventListener("click", addElement);
+ment.createElement("td"));
+    </script>
+  </body>
+  
+</html>
+
+
